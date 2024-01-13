@@ -17,7 +17,7 @@ protocol MQTT @serializer "JSON"
  
 
 thing MQTTDriver includes TemperatureMsg, OnOffMsg, GeneralMsg {
-	required port to_pim {sends temperature, heatOn, heatOff, set_temperature, set_delta, fetch_temp}
+	required port to_pim {sends temperature}
 	provided port from_pim {receives add_thermometer, add_device, SwitchOn, SwitchOff, prompt}
 	
 	//Only one MQTT port to receive the sensor values
