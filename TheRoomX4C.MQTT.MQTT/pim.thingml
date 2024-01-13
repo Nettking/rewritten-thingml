@@ -448,7 +448,7 @@ thing FireProtect includes GeneralMsg, OnOffMsg, TimerMsgs {
 				on_when_returning = true
 			end
 			transition -> COOLING 
-			event turnoff:from_psm?SwitchOff
+			event turnoff:from_psm?heatOff
 			action do
 				to_psm!SwitchOff(turnoff.did)
 				on_when_returning = false
@@ -472,7 +472,7 @@ thing FireProtect includes GeneralMsg, OnOffMsg, TimerMsgs {
 				on_when_returning = true
 			end
 			
-			internal event from_psm?SwitchOff
+			internal event from_psm?heatOff
 			action do
 				on_when_returning = false
 			end
@@ -497,7 +497,7 @@ thing FireProtect includes GeneralMsg, OnOffMsg, TimerMsgs {
 			transition -> ON
 			event turnon:from_psm?heatOn
 			action to_psm!SwitchOn(turnon.did)
-			internal event turnoff:from_psm?SwitchOff
+			internal event turnoff:from_psm?heatOff
 			action to_psm!SwitchOff(turnoff.did)
 			internal event from_psm?add_device
 			action to_psm!prompt("IERRO in FireProtection: add_device at improper place OFF")
